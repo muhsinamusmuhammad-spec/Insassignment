@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> my webpage</title>
+    <style>
+      div {
+        border-radius: 20px;
+        width: 80%;
+        padding: 10px;
+      }
+
+      h1 {
+        text-align: center;
+        font-family:
+          "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>My Static Web Application</h1>
+      <h3>About me</h3>
+      <p>
+        Muhsina Musa Muhammad<br />
+        Computer Science Department<br />
+        UJ/2025/cp/0417<br />
+        200 level
+      </p>
+      <h3>About this page</h3>
+      <p>
+        This is a static web application that gives detailled information about
+        me<br />
+        it is an <b>INS205- assessment</b>
+      </p>
+      <h3>contact</h3>
+      <p>For more enquiries send me an email</p>
+
+      <a href="mailto:2025cp0417@unijos.edu.ng">
+        <button id="send-btn">send Email</button>
+      </a>
+    </div>
+    <script>
+      const matric = "UJ/2025/cp/0417";
+      function hashString(str) {
+        let hash = 0;
+        for (let i = 0 < str.length; i++) {
+          hash = (hash * 3 + str.charCodeAt(i)) >>> 0;
+        }
+        return hash;
+      }
+      //Normalise input
+      const normalised = matric.trim().toUpperCase();
+
+      //map the hash to a hue value between 0 and 359 degrees
+      const hue = hashString(normalised) % 360;
+
+      //build an hsl colour: fixed saturation & lightness, varying hue
+      const buttoncolour = 'hsl(${hue}, 65%, 45%)';
+
+      //Apply the colour to the send Email button
+      document.getElementById("send-btn").style.background = buttoncolour;
+    </script>
+  </body>
+</html>
+
